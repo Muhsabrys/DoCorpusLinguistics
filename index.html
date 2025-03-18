@@ -1,44 +1,36 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NLP Toolkit</title>
+    <title>Corpus Analyzer</title>
     <link rel="stylesheet" href="style.css">
-    <script src="libs/d3.min.js"></script>
-    <script src="libs/wordcloud2.min.js"></script>
-    <script src="libs/compromise.min.js"></script>
-    <script src="libs/ml-pca.min.js"></script>
 </head>
 <body>
-<div class="container">
-    <h2>NLP Toolkit</h2>
-    <input type="file" id="corpusInput" accept=".txt">
-    <input type="file" id="stopwordsInput" accept=".txt" placeholder="Upload Stop Words">
-    <div id="actions" hidden>
-        <label for="topX">Top X Word Frequency:</label>
-        <input type="number" id="topX" value="10">
-        <button onclick="getWordFrequency()">Get Frequency</button>
-        <br>
 
-        <input type="text" id="searchWord" placeholder="Search word">
-        <button onclick="getConcordance()">Get Concordance</button>
-        <br>
+<h2>Corpus Analyzer</h2>
 
-        <button onclick="extractCollocations()">Extract Collocations (PMI)</button>
-        <br>
+<input type="file" id="corpusFile" accept=".txt">
+<input type="file" id="stopwordsFile" accept=".txt">
+<br/><br/>
 
-        <button onclick="generateWordCloud()">Generate Word Cloud</button>
-        <br>
-
-        <button onclick="performPCA()">Perform PCA</button>
-        <br>
-
-        <button onclick="performTopicModeling()">Perform Topic Modeling</button>
-    </div>
-    <div id="results"></div>
-    <canvas id="wordCloudCanvas" width="600" height="400"></canvas>
+<div id="options">
+    <label><input type="checkbox" value="freq" checked>Top X Word Frequency</label><br>
+    <label><input type="checkbox" value="concordance">Word Concordance</label><br>
+    <label><input type="checkbox" value="collocations">Collocations (PMI)</label><br>
+    <label><input type="checkbox" value="wordcloud">Word Cloud</label><br>
+    <label><input type="checkbox" value="pca">Principal Component Analysis</label><br>
+    <label><input type="checkbox" value="topic">Topic Modeling</label><br>
 </div>
+<br/>
+
+<div id="parameters">
+    X (for top frequency): <input type="number" id="topX" value="10"><br>
+    Word (for concordance/collocations): <input type="text" id="targetWord"><br>
+    <button id="analyzeBtn">Analyze</button>
+</div>
+
+<div id="results"></div>
+
 <script src="script.js"></script>
 </body>
 </html>
