@@ -7,8 +7,9 @@ document.getElementById('corpusInput').addEventListener('change', function() {
         corpusText = reader.result.toLowerCase();
         document.getElementById('actions').hidden = false;
     };
-    reader.readAsText(this.files[0]);
+    reader.readAsText(this.files[0], 'UTF-8');  // explicitly UTF-8
 });
+
 
 document.getElementById('stopwordsInput').addEventListener('change', function() {
     const reader = new FileReader();
